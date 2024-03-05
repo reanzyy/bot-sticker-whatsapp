@@ -16,7 +16,7 @@ client.on('ready', () => {
 client.on('message', async (message) => {
     if (message.body === '.test') {
         await client.sendMessage(message.from, 'hii bot is on!');
-    } else if (message.type === 'image' && message.body.startsWith('.sticker')) {
+    } else if (message.type === 'image') {
         const media = await message.downloadMedia();
         client.sendMessage(message.from, media, {
             sendMediaAsSticker: true
@@ -24,13 +24,6 @@ client.on('message', async (message) => {
     } else if (message.body === '.random') {
         const random = await MessageMedia.fromUrl('https://picsum.photos/200', { unsafeMime: true });
         await client.sendMessage(message.from, random);
-    } else if (message.body.lastIndexOf && message.body === '.download') {
-        if (message.hasMedia) {
-            const media = await message.downloadMedia();
-            client.sendMessage(message.from, media, { caption: 'Here is your downloaded message:' });
-        } else {
-            client.sendMessage(message.from, message.body.lastIndexOf);
-        }
     }
 });
 
