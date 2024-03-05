@@ -6,7 +6,7 @@ const client = new Client({
 });
 
 client.on('qr', (qr) => {
-    qrcode.generate(qr, { small: true });
+    qrcode.generate(qr, { small: true, }), console.log('scan this qr');
 });
 
 client.on('ready', () => {
